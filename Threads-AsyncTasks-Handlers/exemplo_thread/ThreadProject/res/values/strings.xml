@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ThreadProject</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="count">Contar</string>
+    <string name="finish">Acabou no número </string>
+    <string name="cancel">Cancel</string>
+    <string name="canceled">AsyncTask cancelada</string>
+
+</resources>
