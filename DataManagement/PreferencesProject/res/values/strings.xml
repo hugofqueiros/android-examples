@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PreferencesProject</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="check_preference_title">Notificações</string>
+    <string name="check_preference_summary">Apresentar notificações quando as condições metereológicas se alteram</string>
+    
+    <string name="screen_title">Novo ecrã de preferências</string>
+    
+    <string name="list_preference_title">Idioma das notificações</string>
+    <string name="list_preference_dialog_title">Escolha um idioma</string>
+    
+    <string name="edit_preference_title">Username</string>
+    <string name="edit_preference_dialog_title">Escolha um username para utilizar na aplicação</string>
+    
+    <string name="preferences_menu">Preferências</string>
+    
+    <string name="save">Gravar username</string>
+    
+	<string-array name="pref_languages">
+		<item>Português</item>
+		<item>Inglês</item>
+	</string-array>
+	<string-array name="pref_languages_values">
+		<item>pt</item>
+		<item>en</item>
+	</string-array>    
+</resources>
