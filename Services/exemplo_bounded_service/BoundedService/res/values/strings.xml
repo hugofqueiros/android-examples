@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">StartedService</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="service_active">Serviço activo</string>
+    <string name="service_not_active">Serviço desactivado</string>
+    <string name="button_service">Comunicar com Serviço</string>
+    
+    <string name="service_working">Serviço a funcionar correctamente</string>
+
+</resources>
