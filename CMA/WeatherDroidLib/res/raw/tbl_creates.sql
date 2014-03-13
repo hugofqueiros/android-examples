@@ -1,0 +1,2 @@
+CREATE TABLE tbl_place (id_place INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(75) NOT NULL, latitude FLOAT NOT NULL, longitude FLOAT NOT NULL); 
+cREATE TABLE tbl_weather_condition (id_place INTEGER, date_condition VARCHAR(10), temperature INTEGER, min_temperature INTEGER, max_temperature INTEGER, description VARCHAR(50), observation_time VARCHAR(50), windspeed_miles INTEGER, windspeed_kmph INTEGER, wind_direction VARCHAR(10), precipitation NUMERIC, humidity INTEGER, icon TEXT);
