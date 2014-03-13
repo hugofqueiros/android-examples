@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CountryList2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="no_items">Não existem cidades a mostrar</string>
+    <string name="name">Name:</string>
+    <string name="continent">Continent:</string>
+    
+    
+    <string name="preferences_label">Preferences</string>
+
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory android:title="CountryList Preferences">
+        <ListPreference android:key="continent_pref" android:title="Continent" android:summary="Filter countries by continent" android:defaultValue="Show All"/>
+    </PreferenceCategory>
+    
+
+</PreferenceScreen>
