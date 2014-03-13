@@ -1,7 +1,7 @@
 package com.cma.weatherdroid;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 
 public class WeatherDroidMainActivity extends Activity {
@@ -18,5 +18,4 @@ public class WeatherDroidMainActivity extends Activity {
 	getMenuInflater().inflate(R.menu.weather_droid_main, menu);
 	return true;
     }
-
 }
