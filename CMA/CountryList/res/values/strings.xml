@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CountryList</string>
+    <string name="hello_world">Hello world!</string>
+    
+	<string name="no_items">Não existem cidades a mostrar</string>
+    <string name="name">Name:</string>
+    <string name="continent">Continent:</string>
+
+    <string name="dialog_title">Remover da lista</string>
+    <string name="dialog_message_part1">Confirma a remoção de </string>
+    <string name="dialog_message_part2">da lista?</string>
+
+    <string name="dialog_pos_button">Sim</string>
+    <string name="dialog_neg_button">Cancelar</string>
+</resources>
