@@ -4,5 +4,32 @@
     <string name="app_name">WeatherDroid</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    
+    <string name="no_items">No Items to show</string>
+    
+    <string name="weather_img_descrip">Weather Image</string>
 
+    <string name="weather_descript_partly_cloudy">Partly Cloudy</string>
+    <string name="weather_desctipt_cloudy">Cloudy</string>
+    <string name="weather_descript_sunny">Sunny</string>
+    <string name="weather_descript_rainny">Rainny</string>
+    
+    <string name="future_weather_lbl">Future Weather:</string>
+    
+    <string name="default_city_name">Nowhere</string>
+    <string name="default_wind">32 km/h (W)</string>
+    <string name="default_temperature">15º</string>
+    <string name="default_max_temp">30</string>
+    <string name="default_min_temp">0</string>
+    <string name="default_humidity">60%</string>
+    <string name="default_precipitation">0.1mm</string>
+    <string name="default_date">2014-01-01</string>
+    
+    <string name="wind_lbl">Wind</string>
+    <string name="humidity_lbl">Humidity</string>
+    <string name="precipitation_lbl">Precipitation</string>
+    <string name="km_h_lbl">Km/h</string>
+   	<string name="max_lbl">MAX:</string>
+   	<string name="min_lbl">MIN:</string>
+    
 </resources>
