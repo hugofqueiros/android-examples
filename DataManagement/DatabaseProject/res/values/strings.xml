@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DatabaseProject</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="first_name">primeiro nome</string>
+    <string name="last_name">último nome</string>
+    
+    <string name="save_person">Gravar pessoa</string>
+    <string name="refresh_persons">Actualizar dados</string>
+    <string name="remove_person">Eliminar pessoa</string>
+    
+    <string name="error_insert">Ocorreu um erro ao inserir a pessoa</string>
+    <string name="error_delete">Ocorreu um erro ao eliminar a pessoa</string>
+
+</resources>
