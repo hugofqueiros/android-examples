@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent">
+    
+    <TextView 
+        android:id="@+id/txtLayoutName"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:text="@string/relative_layout"
+        android:gravity="center_horizontal"/>
+
+    <RelativeLayout
+        android:layout_below="@id/txtLayoutName"
+		android:id="@+id/firstpart" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="20dp">
+
+        <TextView
+        	android:id="@+id/label" 
+            android:text="@string/label" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_marginLeft="10dp" 
+            android:layout_centerVertical="true">
+        </TextView>    
+        <Spinner
+            android:id="@+id/spinnerRelativeLayout" 
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content" 
+        	android:layout_toRightOf="@id/label" 
+            android:layout_marginLeft="20dp">  
+        </Spinner>
+    </RelativeLayout>
+
+    <RadioGroup
+        android:layout_below="@id/firstpart" 
+        android:id="@+id/rGroupRelativeLayout" 
+        android:orientation="horizontal" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:gravity="center_horizontal" 
+        android:layout_marginTop="30dp">
+
+        <RadioButton 
+            android:id="@+id/op1RelativeLayout" 
+            android:text="@string/option1" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:checked="true">  
+        </RadioButton>
+		<RadioButton
+            android:id="@+id/op2RelativeLayout" 
+            android:text="@string/option2" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content">  
+        </RadioButton>    
+    </RadioGroup>
+    <Button
+        android:id="@+id/buttonRelativeLayout"
+         android:layout_below="@id/rGroupRelativeLayout" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="20dp"        
+        android:text="@string/goToTableLayout"/>
+</RelativeLayout>

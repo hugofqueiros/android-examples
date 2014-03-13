@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:orientation="vertical" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    android:stretchColumns="1">
+    
+    <TableRow >
+        <TextView
+            android:layout_span="2" 
+        	android:layout_width="match_parent" 
+        	android:layout_height="wrap_content"
+        	android:text="@string/table_layout"
+        	android:gravity="center_horizontal"/>        
+    </TableRow>
+
+    <TableRow
+    	android:layout_marginTop="20dp">
+
+        <TextView
+        	android:text="@string/label" 
+            android:layout_marginLeft="10dp" 
+            android:layout_gravity="center_vertical">  
+        </TextView>
+        <Spinner
+        	android:id="@+id/spinnerTableLayout" 
+            android:layout_marginLeft="20dp">  
+        </Spinner>
+    </TableRow>
+    <RadioGroup         
+    	android:id="@+id/rGroupTableLayout" 
+		android:orientation="horizontal" 
+        android:gravity="center_horizontal" 
+        android:layout_marginTop="30dp">
+
+        <RadioButton 
+        	android:id="@+id/op1TableLayout" 
+            android:text="@string/option1" 
+            android:checked="true">  
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/op2TableLayout" 
+            android:text="@string/option2">  
+        </RadioButton>
+    </RadioGroup>    
+    <TableRow android:layout_marginTop="20dp">
+    	<Button
+        	android:id="@+id/buttonTableLayout"
+        	android:layout_span="2"
+        	android:layout_width="match_parent" 
+        	android:layout_height="wrap_content" 
+        	android:layout_marginTop="20dp"        
+        	android:text="@string/closeTableLayout"/>
+    </TableRow>
+</TableLayout>

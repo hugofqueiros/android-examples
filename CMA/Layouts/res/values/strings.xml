@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Layouts</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="label">País</string>
+    
+    <string name="option1">Opção 1</string>
+    <string name="option2">Opção 2</string>
+    
+    <string name="goToRelativeLayout">Ir para RelativeLayout</string>
+    <string name="goToTableLayout">Ir para TableLayout</string>
+    <string name="closeTableLayout">Fechar TableLayout</string>
+    
+    <string name="linear_layout">LinearLayout</string>
+    <string name="relative_layout">RelativeLayout</string>
+    <string name="table_layout">TableLayout</string>
+
+</resources>

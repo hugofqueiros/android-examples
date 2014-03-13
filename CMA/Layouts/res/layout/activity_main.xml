@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:orientation="vertical" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent">
+    
+    <TextView 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:text="@string/linear_layout"
+        android:gravity="center_horizontal"/>
+
+    <LinearLayout
+		android:orientation="horizontal" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="20dp">
+
+        <TextView
+        	android:text="@string/label" 
+            android:layout_gravity="center_vertical" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_marginLeft="10dp">  
+		</TextView>
+
+        <Spinner
+        	android:id="@+id/spinnerLinearLayout" 
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content" 
+            android:layout_marginLeft="20dp">  
+        </Spinner>
+    </LinearLayout>    
+
+    <RadioGroup
+		android:id="@+id/rGroupLinearLayout" 
+        android:orientation="horizontal" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:gravity="center_horizontal" 
+        android:layout_marginTop="30dp">        
+
+        <RadioButton 
+        	android:id="@+id/op1LinearLayout" 
+            android:text="@string/option1" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:checked="true">  
+        </RadioButton>
+        <RadioButton 
+            android:id="@+id/op2LinearLayout" 
+            android:text="@string/option2" 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content">  
+        </RadioButton>    
+    </RadioGroup>
+
+    <Button 
+        android:id="@+id/buttonLinearLayout" 
+		android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="20dp"
+        android:text="@string/goToRelativeLayout"/>    
+</LinearLayout>
