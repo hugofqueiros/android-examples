@@ -3,8 +3,12 @@
  */
 package com.example.downloadproject;
 
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import android.app.Service;
 import android.content.Intent;
@@ -38,10 +42,17 @@ public class DownloadService extends Service {
 		}
 	}
 	
-	@Override
-	public IBinder onBind(Intent intent) {
-		Log.d(TAG, "Download Service: onBind()");
-		return mBinder;
+	// percorre o asyncTaskMap e remove todos os URLs e DownloadFileAsyncTasks
+	// cuja Thread particular tenha concluido a execução
+	protected void removeFinishedDownloads() {
+		List<String> toRemove = new ArrayList<String>();
+		
+		for(Map.Entry<String, DownloadFileAsyncTask> entry : asyncTaskMap.entrySet()) {
+			if(entry.getValue().getStatus() == AsyncTask.Status.FINISHED)
+				toRemove.add(entry.getKey());
+		}
+		for(String key : toRemove)
+			asyncTaskMap.remove(key);
 	}
 	
 	@Override
@@ -52,15 +63,76 @@ public class DownloadService extends Service {
 	}
 	
 	@Override
-	public void onStart(Intent intent, int startId) {
-		super.onStart(intent, startId);
-		Toast.makeText(this, "Service started", Toast.LENGTH_SHORT).show();
+	public int onStartCommand(Intent intent, int flags, int startId) {
+		//return super.onStartCommand(intent, flags, startId);
+		Log.d(TAG, DownloadService.class.getSimpleName() + "onStartCommand called.");
+		
+		removeFinishedDownloads();
+		// obtém o URL enviado através do Intent
+		String downloadURL = intent.getExtras().getString(DOWNLOAD_URL_KEY);
+		// lança o download
+		startDownloadAsyncTask(downloadURL);
+		
+		// Flags possíveis:
+		// START_NOT_STICKY: 		se o Android destruir o serviço depois de onStartCommand(), NÃO recriar o serviço, a não ser que existam Intents pendentes para lançar.
+		// START_STICKY: 			se o Android destruir o serviço depois de onStartCommand(), recriar o serviço e invocar onStartCommand(), no entanto não volta a enviar o último Intent.
+		// START_REDELIVER_INTENT: 	se o Android destruir o serviço depois de onStartCommand(), recriar o serviço e invocar onStartCommand() com o último Intent que foi enviado para o serviço.
+		return START_NOT_STICKY;
 	}
 	
+	@Override
+	public IBinder onBind(Intent intent) {
+		Log.d(TAG, DownloadService.class.getSimpleName() + " onBind()");
+		return mBinder;
+	}
+
+	@Override
+	public void onRebind(Intent intent) {
+		Log.d(TAG, DownloadService.class.getSimpleName() + " onRebind()");
+		super.onRebind(intent);
+	}
+
+	@Override
+	public boolean onUnbind(Intent intent) {
+		Log.d(TAG, DownloadService.class.getSimpleName() + " onUnbind()");
+		// se não for devolvido true, o onRebind não será executado em futuros binds
+		return super.onUnbind(intent);
+	}
+		
 	@Override
 	public void onDestroy() {
 		Log.d(TAG, "DownloadService onDestroy.");
 		super.onDestroy();
 		Toast.makeText(this, "Service Destroyed", Toast.LENGTH_SHORT).show();
+	}
+	
+	/**
+	 * Inicia o download assíncrono de um ficheiro através do protocolo HTTP
+	 * @param downloadURL
+	 * @return true caso o download tenha sido lançado com sucesso
+	 * 			false caso o download não tenha sido lançado
+	 */
+	protected boolean startDownloadAsyncTask(String downloadURL) {
+		// apenas lança o download se o mesmo já não estiver a decorrer
+		if(asyncTaskMap.containsKey(downloadURL)) {
+			Log.w(TAG, "Already Downloading " + downloadURL);
+			return false;
+		}
+		
+		URL url;
+		try {
+			url = new URL(downloadURL);
+			// lança a DownloadFileAsyncTask...
+			DownloadFileAsyncTask asyncTask = new DownloadFileAsyncTask(this, url);
+			asyncTask.execute();
+			// ... e coloca-a no HashMap para que não se perca a sua referência
+			asyncTaskMap.put(downloadURL, asyncTask);
+		} catch (MalformedURLException e) {
+			// caso o URL seja inválido...
+			Log.e(TAG, "Invalid URL", e);
+			return false;
+		}
+		
+		return true;
 	}
 }
