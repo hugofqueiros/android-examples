@@ -9,15 +9,16 @@ import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class DownloadFileAsyncTask extends AsyncTask<URL, Integer, Integer> {
+// Void, Integer, Integer
+public class DownloadFileAsyncTask extends AsyncTask<Void, Integer, Integer> {
 
 	public static final String TAG = "DOWNLOAD";
 	
 	// acções a enviar por broadcast
 	// DOWNLOAD_UPDATE_ACTION: para enviar updates do progresso do download
-	public static final String DOWNLOAD_UPDATE_ACTION = "DOWNLOAD_UPDATE";
+	public static final String DOWNLOAD_UPDATE_ACTION = "com.example.DOWNLOAD_UPDATE";
 	// DOWNLOAD_CANCELED_ACTION: para notificar que o download foi cancelado
-	public static final String DOWNLOAD_CANCELED_ACTION = "DOWNLOAD_CANCELED";
+	public static final String DOWNLOAD_CANCELED_ACTION = "com.example.DOWNLOAD_CANCELED";
 	
 	// KEY do par Key/Value que contém a percentagem de progresso do download
 	public static final String PERCENT_EXTRA = "PERCENT_EXTRA";
@@ -45,7 +46,7 @@ public class DownloadFileAsyncTask extends AsyncTask<URL, Integer, Integer> {
 	 * Este método é executado numa Thread de execução à parte (particular)
 	 */
 	@Override
-	protected Integer doInBackground(URL... params) {
+	protected Integer doInBackground(Void... params) {
 		int mDownloadPercentage = 0;
 		
 		try {
@@ -109,6 +110,23 @@ public class DownloadFileAsyncTask extends AsyncTask<URL, Integer, Integer> {
 		context.sendBroadcast(mPercentChangedIntent);
 		
 		// super.onPostExecute(result);
-	}		
+	}
+
+	/**
+	 * Invocado quando a Thread conclui a sua execução e se o método
+	 * cancel() tiver sido invocado.
+	 * Este método é executado na Thread de execução principal (UI)
+	 */
+	@Override
+	protected void onCancelled(Integer result) {
+		// super.onCancelled(result);
+		Log.d(TAG, DownloadFileAsyncTask.class.getSimpleName() + "onCancelled: " + result);
+		Intent mCanceledIntent = new Intent(DOWNLOAD_CANCELED_ACTION);
+		mCanceledIntent.putExtra(PERCENT_EXTRA, result);
+		mCanceledIntent.putExtra(URL_EXTRA, url.toString());
+		context.sendBroadcast(mCanceledIntent);		
+	}
+	
+	
 }
 
