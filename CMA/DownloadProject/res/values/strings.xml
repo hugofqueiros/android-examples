@@ -5,6 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
 
-    <string name="default_url">http://www.google.pt</string>
+    <string name="default_url">https://dl.dropboxusercontent.com/u/13593660/android.zip</string>
 	<string name="button_text">Start Download</string>
 </resources>

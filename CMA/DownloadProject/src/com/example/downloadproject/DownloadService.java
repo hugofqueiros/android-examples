@@ -119,6 +119,8 @@ public class DownloadService extends Service {
 			return false;
 		}
 		
+		Log.i(TAG, DownloadService.class.getSimpleName() + "download: " + downloadURL);
+		
 		URL url;
 		try {
 			url = new URL(downloadURL);
@@ -134,5 +136,19 @@ public class DownloadService extends Service {
 		}
 		
 		return true;
+	}
+	
+	/**
+	 * Cancela o download de um ficheiro
+	 * @param downloadURL
+	 * @return true se o download tiver sido cancelado
+	 * 			false se não tiver sido cancelado qualquer download
+	 */
+	public boolean cancelDownload(String downloadURL) {
+		if(asyncTaskMap.containsKey(downloadURL)) {
+			asyncTaskMap.get(downloadURL).cancel(true);
+			return true;
+		}
+		return false;
 	}
 }
