@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TableLayout        
+        android:padding="10dp"
+        android:layout_width="match_parent" 
+      	android:layout_height="wrap_content" 
+      	android:stretchColumns="1">
+      	
+        <TableRow 
+            android:paddingBottom="20dp">
+    		<TextView
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:text="@string/bt_status" />
+    
+	    	<TextView
+	        	android:id="@+id/txtBluetoothStatus"
+	        	android:paddingLeft="20dp"
+	        	android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:text="@string/bt_disconnected" />
+    	</TableRow>
+    	
+    	<TableRow >
+    		<TextView
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:text="@string/temp_1" />
+    
+	    	<TextView
+	        	android:id="@+id/txtTemp1"
+	        	android:paddingLeft="20dp"
+	        	android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:text="@string/n_a" />
+    	</TableRow>
+
+    	<TableRow 
+    	    android:layout_marginTop="5dp">
+    		<TextView
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:text="@string/temp_2" />
+    
+	    	<TextView
+	        	android:id="@+id/txtTemp2"
+	        	android:paddingLeft="20dp"
+	        	android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:text="@string/n_a" />
+    	</TableRow>
+    	
+    	<TableRow 
+    	    android:layout_marginTop="5dp">
+    		<TextView
+        		android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+        		android:text="@string/temp_3" />
+    
+	    	<TextView
+	        	android:id="@+id/txtTemp3"
+	        	android:paddingLeft="20dp"
+	        	android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:text="@string/n_a" />
+    	</TableRow>   				
+    </TableLayout>
+    
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    	
+    	<TextView
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="@string/light_1" />
+    
+	    <ToggleButton
+	        android:id="@+id/toggle1"
+	        android:layout_marginLeft="20dp" 
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content">
+        </ToggleButton>        
+    </LinearLayout>
+    
+    <SeekBar 
+        android:id="@+id/seekbar1"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="255">        
+    </SeekBar>    
+    
+    <Button android:id="@+id/refresh"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/refresh"/>
+</LinearLayout>
