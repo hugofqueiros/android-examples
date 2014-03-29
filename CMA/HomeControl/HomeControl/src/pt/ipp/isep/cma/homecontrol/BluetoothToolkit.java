@@ -19,7 +19,8 @@ import android.util.Log;
  */
 public class BluetoothToolkit {
 	
-	private static final String TAG = BluetoothToolkit.class.getSimpleName();
+	// private static final String TAG = BluetoothToolkit.class.getSimpleName();
+	public static final String TAG = "HomeControl";
 	
 	/**
 	 * Interface para a implementação do listener que é notificado quando
@@ -28,6 +29,7 @@ public class BluetoothToolkit {
 	 * uma lista com todos os dispositivos encontrados.
 	 */
 	public static interface BluetoothToolkitListener {
+		
 		public void discoveryComplete(List<BluetoothDevice> devices);
 	}
 	
@@ -42,6 +44,8 @@ public class BluetoothToolkit {
 	private List<BluetoothDevice> pairedDevices = new ArrayList<BluetoothDevice>();
 
 	public BluetoothToolkit(Context context, BluetoothAdapter adapter) {
+		Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " BluetoothToolkit ");
+		
 		this.adapter = adapter;
 		this.context = context;
 		
@@ -52,6 +56,9 @@ public class BluetoothToolkit {
 	
 	public BluetoothToolkit(Context context, BluetoothAdapter adapter, BluetoothToolkitListener listener) {
 		this(context, adapter);
+		
+		Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " BluetoothToolkit ");
+		
 		this.listener = listener;
 	}
 	
@@ -62,6 +69,7 @@ public class BluetoothToolkit {
 	 * @return lista atualizada de dispositivos emparelhados (bonded)
 	 */
 	public List<BluetoothDevice> getPairedDevices() {
+		Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " getPairedDevices ");
 		pairedDevices.clear();
 		pairedDevices.addAll(adapter.getBondedDevices());
 		return pairedDevices;
@@ -74,6 +82,7 @@ public class BluetoothToolkit {
 	 * @return lista de dispositivos descobertos
 	 */
 	public List<BluetoothDevice> getDiscoveredDevices() {
+		Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " getDiscoveredDevices ");
 		return discoveredDevices;
 	}
 	
@@ -83,7 +92,7 @@ public class BluetoothToolkit {
 	 * @return false se o BluetoothAdapter estiver desligado; true se o processo foi iniciado com sucesso
 	 */
 	public boolean startDeviceDiscovery() {
-	
+		Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " startDeviceDiscovery ");
 		if(!adapter.isEnabled()) {
 			Log.e(TAG, "Cannot start device discovery. Bluetooth adapter is disabled!");
 			return false;
@@ -106,6 +115,7 @@ public class BluetoothToolkit {
 	 * Cancela o processo de Device Discovery, se o mesmo estiver a decorrer.
 	 */
 	public void cancelDeviceDiscovery() {
+		Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " cancelDeviceDiscovery ");
 		try {
 			// primeiro desregista o broadcast receiver (importante!)
 			context.unregisterReceiver(discoveryReceiver);
@@ -120,6 +130,8 @@ public class BluetoothToolkit {
 	private BroadcastReceiver discoveryReceiver = new BroadcastReceiver() {		
 		@Override
 		public void onReceive(Context context, Intent intent) {		
+			
+			Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " onReceive ");
 			
 			String action = intent.getAction();
 						
@@ -147,10 +159,12 @@ public class BluetoothToolkit {
 	};
 
 	public BluetoothToolkitListener getListener() {
+		Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " getListener ");
 		return listener;
 	}
 
 	public void setListener(BluetoothToolkitListener listener) {
+		Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " setListener ");
 		this.listener = listener;
 	}
 

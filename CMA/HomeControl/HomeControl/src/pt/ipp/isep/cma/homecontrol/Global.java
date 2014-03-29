@@ -1,7 +1,10 @@
 package pt.ipp.isep.cma.homecontrol;
 
 
-public class Global {		
+public class Global {
+	
+	public static final String TAG = "HomeControl";
+	
 	public static final byte MESSAGE_TYPE_REQUEST	= 0x10;
 	public static final byte MESSAGE_TYPE_RESPONSE	= 0x11;
 	public static final byte MESSAGE_TYPE_ACTION	= 0x12;

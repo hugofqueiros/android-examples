@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +13,15 @@ import android.widget.TextView;
 
 public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
 
+	public static final String TAG = "HomeControl";
+	
 	private List<BluetoothDevice> devices;
 	private Context context;
 	
 	public DeviceListAdapter(Context context, List<BluetoothDevice> objects) {
 		super(context, R.layout.device, objects);
+		
+		Log.i(TAG, DeviceListAdapter.class.getSimpleName() + " DeviceListAdapter constructor");
 		
 		this.devices = objects;
 		this.context = context;
@@ -25,6 +30,7 @@ public class DeviceListAdapter extends ArrayAdapter<BluetoothDevice> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 	
+		Log.i(TAG, DeviceListAdapter.class.getSimpleName() + " getView");
 		View v = convertView;
 		if(v == null) {
 			LayoutInflater vi = (LayoutInflater) 

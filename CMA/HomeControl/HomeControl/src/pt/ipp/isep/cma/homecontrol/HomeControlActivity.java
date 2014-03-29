@@ -2,6 +2,7 @@ package pt.ipp.isep.cma.homecontrol;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -12,6 +13,8 @@ import android.widget.ToggleButton;
 
 public class HomeControlActivity extends Activity implements OnClickListener, OnSeekBarChangeListener {
 
+	public static final String TAG = "HomeControl";
+	
 	private TextView txtTemp1;
 	private TextView txtTemp2;
 	private TextView txtTemp3;
@@ -24,6 +27,9 @@ public class HomeControlActivity extends Activity implements OnClickListener, On
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onCreate");
+		
 		setContentView(R.layout.home_control);
 		
 		txtTemp1 = (TextView) findViewById(R.id.txtTemp1);
@@ -43,11 +49,13 @@ public class HomeControlActivity extends Activity implements OnClickListener, On
 
 	@Override
 	protected void onStart() {
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onStart");
 		super.onStart();
 	}
 
 	@Override
 	protected void onResume() {
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onResume");
 		super.onResume();
 	}
 
