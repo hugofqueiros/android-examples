@@ -16,5 +16,6 @@
         </activity>
         <service android:name="DownloadService"/>
         <!--created by Zhao at 2014-03-27 21:35:23-->
+        <receiver android:name="MyBroadcastReceiverWidget"></receiver>
     </application>
 </manifest>
