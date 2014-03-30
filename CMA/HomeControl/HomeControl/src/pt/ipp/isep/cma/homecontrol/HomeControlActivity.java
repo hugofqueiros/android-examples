@@ -61,35 +61,43 @@ public class HomeControlActivity extends Activity implements OnClickListener, On
 
 	@Override
 	protected void onPause() {
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onPause");
 		super.onPause();
 	}
 
 	@Override
 	protected void onStop() {
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onStop");
 		super.onStop();
 	}
 	
 	@Override
 	public void onClick(View v) {
-
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onClick");
+		
 			switch (v.getId()) {
 			case R.id.toggle1:
+				Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onClick: " + v.getId());
 				break;
 			case R.id.refresh:
+				Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onClick: " + v.getId());
 				break;
 			}
 	}
 
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress,
-			boolean fromUser) {		
+			boolean fromUser) {
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onProgressChanged ");
 	}
 
 	@Override
 	public void onStartTrackingTouch(SeekBar seekBar) {
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onStartTrackingTouch ");
 	}
 
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onStopTrackingTouch ");		
 	}
 }

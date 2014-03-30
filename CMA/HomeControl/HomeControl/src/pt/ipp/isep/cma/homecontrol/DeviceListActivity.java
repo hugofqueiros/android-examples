@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ListActivity;
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,11 +26,14 @@ public class DeviceListActivity extends ListActivity implements OnClickListener 
     private DeviceListAdapter deviceAdapter;
     private List<BluetoothDevice> deviceArray = new ArrayList<BluetoothDevice>();
     
+    private BluetoothAdapter blueToothAdapter;
+    
     private void refreshDevices() {
     	Log.i(TAG, DeviceListActivity.class.getSimpleName() + " refreshDevices");
     	deviceArray.clear();
     	
     	// TODO: add devices here - criar um intent que vai mandar a list para a outra activity
+    	
     	
     	deviceAdapter.notifyDataSetChanged();
     }
@@ -45,6 +49,21 @@ public class DeviceListActivity extends ListActivity implements OnClickListener 
 	    setContentView(R.layout.device_list);
 	    
 	    // TODO: bt adapter e toolkit...
+	    blueToothAdapter = BluetoothAdapter.getDefaultAdapter();
+	    
+	    if (blueToothAdapter == null) {
+	    	Log.i(TAG, DeviceListActivity.class.getSimpleName() + "No Support for Bluetooth");
+	    	return ;
+	    }
+	    
+	    btToolkit = new BluetoothToolkit(this, blueToothAdapter, new BluetoothToolkit.BluetoothToolkitListener() {
+			
+			@Override
+			public void discoveryComplete(List<BluetoothDevice> devices) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	    
 	    
 	    scanButton = (Button) findViewById(R.id.button_scan);
@@ -75,6 +94,7 @@ public class DeviceListActivity extends ListActivity implements OnClickListener 
 		if(v.getId() == R.id.button_scan) {
 	    	Log.i(TAG, DeviceListActivity.class.getSimpleName() + " onClick");	
 				// TODO: start scan...
+	    	deviceArray = (List<BluetoothDevice>) blueToothAdapter.getBondedDevices();
 			
 		
 		}	
