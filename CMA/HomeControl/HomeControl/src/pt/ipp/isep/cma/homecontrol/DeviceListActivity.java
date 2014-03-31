@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.ListActivity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,7 +34,8 @@ public class DeviceListActivity extends ListActivity implements OnClickListener 
     	deviceArray.clear();
     	
     	// TODO: add devices here - criar um intent que vai mandar a list para a outra activity
-    	
+    	deviceArray = btToolkit.getDiscoveredDevices();
+    	Intent intBtDevices = new Intent();
     	
     	deviceAdapter.notifyDataSetChanged();
     }
@@ -94,7 +96,12 @@ public class DeviceListActivity extends ListActivity implements OnClickListener 
 		if(v.getId() == R.id.button_scan) {
 	    	Log.i(TAG, DeviceListActivity.class.getSimpleName() + " onClick");	
 				// TODO: start scan...
-	    	deviceArray = (List<BluetoothDevice>) blueToothAdapter.getBondedDevices();
+	    	// deviceArray = btToolkit.getPairedDevices();
+	    	
+	    	btToolkit.getDiscoveredDevices();
+	    	btToolkit.cancelDeviceDiscovery();
+	    	
+	    	deviceArray = btToolkit.getDiscoveredDevices();
 			
 		
 		}	

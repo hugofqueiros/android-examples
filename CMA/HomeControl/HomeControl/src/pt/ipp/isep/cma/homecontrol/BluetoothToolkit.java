@@ -57,7 +57,9 @@ public class BluetoothToolkit {
 	public BluetoothToolkit(Context context, BluetoothAdapter adapter, BluetoothToolkitListener listener) {
 		this(context, adapter);
 		
-		Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " BluetoothToolkit ");
+		Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " BluetoothToolkit constructor ");
+		Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " context: " + context.toString());
+		Log.i(TAG, BluetoothToolkit.class.getSimpleName() + " adapter: " + adapter.getName());
 		
 		this.listener = listener;
 	}
