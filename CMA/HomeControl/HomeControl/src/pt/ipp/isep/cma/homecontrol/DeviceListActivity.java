@@ -29,17 +29,6 @@ public class DeviceListActivity extends ListActivity implements OnClickListener 
     
     private BluetoothAdapter blueToothAdapter;
     
-    private void refreshDevices() {
-    	Log.i(TAG, DeviceListActivity.class.getSimpleName() + " refreshDevices");
-    	deviceArray.clear();
-    	
-    	// TODO: add devices here - criar um intent que vai mandar a list para a outra activity
-    	deviceArray = btToolkit.getDiscoveredDevices();
-    	Intent intBtDevices = new Intent();
-    	
-    	deviceAdapter.notifyDataSetChanged();
-    }
-   
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
@@ -90,6 +79,18 @@ public class DeviceListActivity extends ListActivity implements OnClickListener 
     	Log.i(TAG, DeviceListActivity.class.getSimpleName() + " onPause");			
 		super.onPause();
 	}
+	
+    private void refreshDevices() {
+    	Log.i(TAG, DeviceListActivity.class.getSimpleName() + " refreshDevices");
+    	deviceArray.clear();
+    	
+    	// TODO: add devices here - criar um intent que vai mandar a list para a outra activity
+    	deviceArray = btToolkit.getDiscoveredDevices();
+    	Intent intBtDevices = new Intent();
+    	
+    	deviceAdapter.notifyDataSetChanged();
+    }
+   
 	
 	@Override
 	public void onClick(View v) {
