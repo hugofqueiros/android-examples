@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class HomeControlActivity extends Activity implements OnClickListener, OnSeekBarChangeListener {
@@ -23,6 +24,9 @@ public class HomeControlActivity extends Activity implements OnClickListener, On
 	private ToggleButton tgButton;
 	private Button btnRefresh;
 	private SeekBar seekBar;
+	
+	// progress var status value
+	private int progressBarValue = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,27 +81,42 @@ public class HomeControlActivity extends Activity implements OnClickListener, On
 		
 			switch (v.getId()) {
 			case R.id.toggle1:
-				Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onClick: " + v.getId());
+				// Send msg to garden lights on/off
+				Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onClick toogle1: " + v.getId());
 				break;
 			case R.id.refresh:
-				Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onClick: " + v.getId());
+				// refresh Home control
+				// get bluetooth status - txtBluetoothStatus - disconnected by default
+				// set temperature 1 - txtTemp1
+				// set temperature 2 - txtTemp2
+				// set temperature 3 - txtTemp3
+				Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onClick refresh: " + v.getId());
 				break;
 			}
 	}
 
+	// Methods to control intensity on lights
+	
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress,
 			boolean fromUser) {
-		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onProgressChanged ");
+		// Equaliting progress to the value on this activity
+		progressBarValue = progress;
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onProgressChanged: " + progressBarValue);
+		
 	}
 
 	@Override
 	public void onStartTrackingTouch(SeekBar seekBar) {
-		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onStartTrackingTouch ");
+		// do nothing?
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onStartTrackingTouch: ");
 	}
 
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
-		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onStopTrackingTouch ");		
+		// send value to control lights?
+		Toast.makeText(HomeControlActivity.this, "seek bar progress: " + progressBarValue, Toast.LENGTH_SHORT).show();
+		
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onStopTrackingTouch: " + progressBarValue);		
 	}
 }
