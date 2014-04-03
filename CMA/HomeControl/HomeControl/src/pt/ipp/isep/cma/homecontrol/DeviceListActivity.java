@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class DeviceListActivity extends ListActivity implements OnClickListener {
 	
@@ -40,10 +41,13 @@ public class DeviceListActivity extends ListActivity implements OnClickListener 
 	    setContentView(R.layout.device_list);
 	    
 	    // TODO: bt adapter e toolkit...
+	    // **********
 	    blueToothAdapter = BluetoothAdapter.getDefaultAdapter();
 	    
 	    if (blueToothAdapter == null) {
 	    	Log.i(TAG, DeviceListActivity.class.getSimpleName() + "No Support for Bluetooth");
+	    	Toast.makeText(this, R.string.bluetooth_n_a, Toast.LENGTH_LONG).show();
+	    	finish();
 	    	return ;
 	    }
 	    
@@ -51,11 +55,11 @@ public class DeviceListActivity extends ListActivity implements OnClickListener 
 			
 			@Override
 			public void discoveryComplete(List<BluetoothDevice> devices) {
-				// TODO Auto-generated method stub
-				
+				scanButton.setEnabled(true);
+				refreshDevices();
 			}
 		});
-	    
+	    // **********
 	    
 	    scanButton = (Button) findViewById(R.id.button_scan);
 	    scanButton.setOnClickListener(this);
@@ -69,7 +73,15 @@ public class DeviceListActivity extends ListActivity implements OnClickListener 
 	protected void onResume() {
 		super.onResume();
 		
-    	Log.i(TAG, DeviceListActivity.class.getSimpleName() + " onResume");		
+    	Log.i(TAG, DeviceListActivity.class.getSimpleName() + " onResume");
+    	
+    	// Ver se os dispositivos estão activos - é no on resume que assim se voltar
+    	// à activity ele volta a verificar se estão activos
+    	if(blueToothAdapter.isEnabled()) {
+    		Intent enableBTIntent = new Intent();
+    		enableBTIntent.setAction(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+    		startActivityForResult(enableBTIntent, Global.REQUEST_ENABLE_BT);
+    	}
 		
 		refreshDevices();
 	}
@@ -85,8 +97,17 @@ public class DeviceListActivity extends ListActivity implements OnClickListener 
     	deviceArray.clear();
     	
     	// TODO: add devices here - criar um intent que vai mandar a list para a outra activity
-    	deviceArray = btToolkit.getDiscoveredDevices();
-    	Intent intBtDevices = new Intent();
+    	// ************
+    	
+    	deviceArray.addAll(btToolkit.getPairedDevices());
+    	List<BluetoothDevice> discoveredDevices = btToolkit.getDiscoveredDevices();
+    	for(BluetoothDevice device : discoveredDevices) {
+    		if(!deviceArray.contains(device)) {
+    			deviceArray.add(device);
+    		}
+    	}
+    	
+    	// ************
     	
     	deviceAdapter.notifyDataSetChanged();
     }
@@ -96,21 +117,25 @@ public class DeviceListActivity extends ListActivity implements OnClickListener 
 	public void onClick(View v) {
 		if(v.getId() == R.id.button_scan) {
 	    	Log.i(TAG, DeviceListActivity.class.getSimpleName() + " onClick");	
-				// TODO: start scan...
-	    	// deviceArray = btToolkit.getPairedDevices();
-	    	
-	    	btToolkit.getDiscoveredDevices();
-	    	btToolkit.cancelDeviceDiscovery();
-	    	
-	    	deviceArray = btToolkit.getDiscoveredDevices();
-			
-		
+				
+	    	// TODO: start scan...
+	    	// ************
+	    	if(btToolkit.startDeviceDiscovery()) {
+	    		v.setEnabled(false);
+	    	}
+	    	// ************
 		}	
 	}
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-
+    	Log.i(TAG, DeviceListActivity.class.getSimpleName() + " onListItemClick");	
+		BluetoothDevice device = deviceArray.get(position);
+		if (device != null) {
+			Intent intStartHome = new Intent(this, HomeControlActivity.class);
+			intStartHome.putExtra(HomeControlService.DEVICE_EXTRA, device);
+			
+			startActivity(intStartHome);
+		}
 	}
-
 }
