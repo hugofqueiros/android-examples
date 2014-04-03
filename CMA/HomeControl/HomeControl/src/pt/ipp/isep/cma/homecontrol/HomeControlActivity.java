@@ -1,7 +1,13 @@
 package pt.ipp.isep.cma.homecontrol;
 
 import android.app.Activity;
+import android.bluetooth.BluetoothDevice;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,14 +33,26 @@ public class HomeControlActivity extends Activity implements OnClickListener, On
 	
 	// progress var status value
 	private int progressBarValue = 0;
+	
+	private BluetoothDevice btDevice;
+	
+	private HomeControlService mControlService;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onCreate");
-		
+		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onCreate");		
 		setContentView(R.layout.home_control);
+		
+		// Gets the intent that started this activity
+		Intent i = getIntent();
+		btDevice = i.getExtras().getParcelable(HomeControlService.DEVICE_EXTRA);
+		if ( btDevice != null ) {
+			Log.e(TAG, "A BluetoothDevice must be sent along with the... ");
+			finish();
+			return;
+		}
 		
 		txtTemp1 = (TextView) findViewById(R.id.txtTemp1);
 		txtTemp2 = (TextView) findViewById(R.id.txtTemp2);
@@ -61,6 +79,10 @@ public class HomeControlActivity extends Activity implements OnClickListener, On
 	protected void onResume() {
 		Log.i(TAG, HomeControlActivity.class.getSimpleName() + " onResume");
 		super.onResume();
+		
+		Intent bindIntent = new Intent(this, HomeControlActivity.class);
+		bindIntent.putExtra(HomeControlService.DEVICE_EXTRA, btDevice);
+		bindService(bindIntent, mConnection, Context.BIND_AUTO_CREATE);
 	}
 
 	@Override
@@ -94,6 +116,19 @@ public class HomeControlActivity extends Activity implements OnClickListener, On
 				break;
 			}
 	}
+	
+	private ServiceConnection mConnection = new ServiceConnection() {
+		
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			mControlService = new HomeControlService();
+		}
+		
+		@Override
+		public void onServiceDisconnected(ComponentName name) {
+			
+		}
+	};
 
 	// Methods to control intensity on lights
 	
