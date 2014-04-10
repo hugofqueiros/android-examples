@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        
+    <TextView 
+        android:id="@+id/lblPersonId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/person_id"/>
+    
+    <TextView 
+        android:id="@+id/txtPersonId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lblPersonId"/>
+    
+    <TextView 
+        android:id="@+id/lblPersonFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblPersonId"
+        android:text="@string/person_fname"/>
+    
+    <TextView 
+        android:id="@+id/txtPersonFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lblPersonFirstName"
+        android:layout_below="@id/txtPersonId"/>
+    
+    <TextView 
+        android:id="@+id/lblPersonLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lblPersonFirstName"
+        android:text="@string/person_lname"/>
+    
+    <TextView 
+        android:id="@+id/txtPersonLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/lblPersonLastName"
+        android:layout_below="@id/txtPersonFirstName"/>
+</RelativeLayout>

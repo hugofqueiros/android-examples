@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FragmentsProject</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="first_person">Primeira Pessoa</string>
+    <string name="second_person">Segunda Pessoa</string>
+    
+    <string name="person_id">ID da Pessoa:</string>
+    <string name="person_fname">Primeiro Nome:</string>
+    <string name="person_lname">Último Nome:</string>
+</resources>
