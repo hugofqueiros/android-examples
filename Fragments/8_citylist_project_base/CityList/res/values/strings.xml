@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CityList</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    
+    <string name="country_label">País:</string>
+    <string name="name_label">Nome:</string>
+    
+    <string name="no_connection_label">No internet connection available! Maps will not be draw.</string>
+    <string name="no_gps_label">GPS is disabled.</string>
+
+</resources>
