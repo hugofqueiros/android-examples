@@ -5,4 +5,4 @@ Android Examples
 
 
 Wiki:
-https://github.com/hugofqueiros/android-examples.wiki.git
+https://github.com/hugofqueiros/android-examples/wiki
