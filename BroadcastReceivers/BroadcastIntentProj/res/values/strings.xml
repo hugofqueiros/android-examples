@@ -4,5 +4,11 @@
     <string name="app_name">BroadcastIntentProj</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    
+    <string name="startAlert">Lançar Alerta</string>
+    
+    <string name="broadcastReceived">Broadcast recebido! Action: </string>
+   	<string name="alarmSet">Alarme definido para</string>
+    <string name="seconds">segundos</string>
+    
 </resources>

@@ -1,8 +1,24 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.broadcastintentproj.MainActivity"
-    tools:ignore="MergeRootFrame" />
+    tools:ignore="MergeRootFrame">
+    
+    	<EditText
+	    android:id="@+id/txtSeconds"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:inputType="number" />
+	
+	<Button
+	    android:id="@+id/btnAction" 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:text="@string/startAlert" />
+    
+</LinearLayout>
+
 
