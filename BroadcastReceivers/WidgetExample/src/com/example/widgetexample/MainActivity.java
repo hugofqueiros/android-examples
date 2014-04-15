@@ -77,7 +77,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 		if (v.getId() == R.id.btnAction) {
 			String msg = txtMsg.getText().toString();
 			
-			// Intent that points the action to exectute and contains
+			// Intent that points the action to execute and contains
 			// the data to sent
 			// The action identifier is registered on the intent-filter of the broadcast receiver in the manifest
 			Intent intent = new Intent();
